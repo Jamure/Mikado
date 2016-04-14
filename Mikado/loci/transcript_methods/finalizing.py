@@ -324,7 +324,7 @@ def __check_internal_orf(transcript, index):
         phase_orf = [transcript.phases[_] for _ in phases_keys]
         # TODO: Why am I calculating the complement of the phase here?
         previous = (3 - phase_orf[0]) % 3
-        transcript.logger.warning(previous)
+        # transcript.logger.warning(previous)
     else:
         phase_orf = []
         previous = 0
