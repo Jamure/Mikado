@@ -786,13 +786,13 @@ Triticum_aestivum_CS42_TGACv1_scaffold_000043_1AL	Triticum_aestivum_CS42_TGACv1_
         transcript = Mikado.loci.Transcript(lines[0], logger=self.logger)
         transcript.add_exons(lines[1:])
 
-        transcript.finalize()
+        # transcript.finalize()
 
-        # with self.assertLogs("augustus", level="WARNING") as cm_out:
-        #     transcript.finalize()
-        #     self.assertTrue(any(
-        #         "The transcript TRIAE4565_1AL_Aug_0021880.1 has coordinates 1:2785" in _ for
-        #     _ in cm_out.output))
+        with self.assertLogs("augustus", level="WARNING") as cm_out:
+            transcript.finalize()
+            self.assertTrue(any(
+                "The transcript TRIAE4565_1AL_Aug_0021880.1 has coordinates 1:2785" in _ for
+            _ in cm_out.output))
 
         self.assertTrue(transcript.is_coding)
 
